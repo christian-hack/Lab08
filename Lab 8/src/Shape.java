@@ -6,6 +6,7 @@ public enum Shape
 	RACECAR;
 	
 	public String toString() {
-		return "" + Shape.class.getName().toLowerCase();
+		String temp = super.toString().toLowerCase();
+				return temp;
 	}
 }
