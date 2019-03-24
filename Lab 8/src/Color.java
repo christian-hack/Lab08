@@ -16,9 +16,9 @@ public enum Color
 	//Constructor
 	Color(int red, int green, int blue) 
 	{
-		r = red;
-		g = green;
-		b = blue;
+		this.r = red;
+		this.g = green;
+		this.b = blue;
 	}
 
 	//Getter's
