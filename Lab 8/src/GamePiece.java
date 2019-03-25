@@ -18,17 +18,22 @@ public enum GamePiece
 		this.appearance = app;
 		this.priority = pri;
 	}
-	public Color getColor() {
+	public Color getColor() 
+	{
 		return appearance.getColor();
 	}
-	public Shape getShape() {
+	public Shape getShape() 
+	{
 		return appearance.getShape();
 	}
-	public GamePiece movesFirst(GamePiece a, GamePiece b) {
-		if (a.priority< b.priority) {
+	public GamePiece movesFirst(GamePiece a, GamePiece b) 
+	{
+		if (a.priority < b.priority) 
+		{
 			return a;
 		}
-		else {
+		else 
+		{
 			return b;
 		}
 		
