@@ -6,7 +6,7 @@ public enum Color
 	BLUE(0, 0, 255),
 	YELLOW(255, 255, 0),
 	CYAN(0, 255, 255),
-	MAGENTA(255, 0, 0);
+	MAGENTA(255, 0, 255);
 	
 	//variables for arguments of constants
 	private final int r;

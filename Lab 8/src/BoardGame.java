@@ -1,13 +1,13 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
 public class BoardGame 
 {
-	protected LinkedHashMap<String, GamePiece> playerPieces;
-	protected LinkedHashMap<String, Location> playerLocations;
+	protected LinkedHashMap<String, GamePiece> playerPieces = new LinkedHashMap<String, GamePiece>();
+	protected LinkedHashMap<String, Location> playerLocations = new LinkedHashMap<String, Location>();
 	
 	public BoardGame() 
 	{
@@ -18,23 +18,24 @@ public class BoardGame
 	{
 		
 		//create boolean variable to return
-		boolean tooMany;
+		//boolean tooMany = false;
 		
 		//proceed with adding player to game piece
-		playerPieces.put(playerName, gamePiece);
+		//playerPieces.put(playerName, gamePiece);
 		
-		//if game piece already has player attached, remove the player from game piece and return false
+		//if game piece already has player associated, remove the player from game piece and return false
 		if (playerPieces.containsValue(gamePiece)) {
-			playerPieces.remove(playerName, gamePiece);
-			tooMany = false;
+			//playerPieces.remove(playerName, gamePiece);
+			return false;
 		}
 		
 		//if game piece is not associated to another player, proceed with assigning location
 		else {
 			playerLocations.put(playerName, initialLocation);
-			tooMany = true;
+			playerPieces.put(playerName, gamePiece);
+			return true;
 		}
-		return tooMany;
+		//return tooMany;
 	}
 	
 	public GamePiece getPlayerGamePiece(String playerName) 
@@ -71,14 +72,14 @@ public class BoardGame
 		GamePiece temp1 = playerPieces.get(playerNames[0]);
 		GamePiece temp2 = playerPieces.get(playerNames[1]);
 		
-		if (temp1.equals(temp1.movesFirst(temp1, temp2))) 
+		if (temp1.equals(GamePiece.movesFirst(temp1, temp2))) 
 		{
 			playerLocations.put(playerNames[0], newLocations[0]);
 			playerLocations.put(playerNames[1], newLocations[1]);
 			temp[0] = "" + playerNames[0];
 			temp[1] = "" + playerNames[1];
 		}
-		else if (temp2.equals(temp1.movesFirst(temp1, temp2))) 
+		else if (temp2.equals(GamePiece.movesFirst(temp1, temp2))) 
 		{
 			playerLocations.put(playerNames[1], newLocations[1]);
 			playerLocations.put(playerNames[0], newLocations[0]);
@@ -129,7 +130,7 @@ public class BoardGame
 	
 	public Set<Location> getPlayerLocations()
 	{
-		Set<Location> l = Collections.emptySet();
+		Set<Location> l = new HashSet<Location>();
 		for (Entry<String, Location> entry : playerLocations.entrySet())
 		{
 			l.add(entry.getValue());
@@ -139,7 +140,7 @@ public class BoardGame
 
 	public Set<GamePiece> getPlayerPieces()
 	{
-		Set<GamePiece> gp = Collections.emptySet();
+		Set<GamePiece> gp = new HashSet<GamePiece>();
 		for (Entry<String, GamePiece> entry : playerPieces.entrySet())
 		{
 			gp.add(entry.getValue());

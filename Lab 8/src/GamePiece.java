@@ -26,7 +26,7 @@ public enum GamePiece
 	{
 		return appearance.getShape();
 	}
-	public GamePiece movesFirst(GamePiece a, GamePiece b) 
+	public static GamePiece movesFirst(GamePiece a, GamePiece b) 
 	{
 		if (a.priority < b.priority) 
 		{
@@ -37,5 +37,9 @@ public enum GamePiece
 			return b;
 		}
 		
+	}
+	public String toString() 
+	{
+		return String.format("%s: a %s %s with priority %d", this.name(), this.getColor(), this.getShape(), this.priority);
 	}
 }
